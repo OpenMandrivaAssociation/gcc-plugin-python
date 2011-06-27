@@ -21,6 +21,7 @@ Patch0:		0001-Fix-compilation-for-Mandriva-Cooker-gcc-4.6.patch
 Requires:	gcc-plugin-devel = %{gccversion}-%{gccrelease}
 BuildRequires:	gcc-plugin-devel
 BuildRequires:	python-sphinx
+BuildRequires:	python-devel
 Requires(post): /sbin/install-info
 Requires(preun): /sbin/install-info
 
