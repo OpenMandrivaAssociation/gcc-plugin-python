@@ -48,6 +48,7 @@ kernel, or about signal-safety in APIs.
 %files
 %defattr(-,root,root,-)
 %{_bindir}/gcc-with-python
+%{_mandir}/gcc-python-plugin.1*
 %{gccdir}/python.so
 
 %prep
@@ -63,9 +64,13 @@ popd
 
 %install
 %{__install} -m755 -d %{buildroot}%{_bindir}
+%{__install} -m755 -d %{buildroot}%{_mandir}
 %{__install} -m755 -d %{buildroot}%{gccdir}
 %{__install} -m755 python.so %{buildroot}%{gccdir}/
 %{__install} -m755 gcc-with-python %{buildroot}%{_bindir}/
+pushd docs
+	%{__install} -m644 _build/man/gcc-python-plugin.1* %{buildroot}%{_mandir}/
+popd
 
 %clean
 rm -fr %{buildroot}
