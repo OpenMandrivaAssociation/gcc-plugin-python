@@ -20,6 +20,11 @@ Source0:	%{srcname}.tar.bz2
 Patch0:		0001-Fix-compilation-for-Mandriva-Cooker-gcc-4.6.patch
 Requires:	gcc-plugin-devel = %{gccversion}-%{gccrelease}
 BuildRequires:	gcc-plugin-devel
+BuildRequires:  gmp-devel
+BuildRequires:  ppl-devel
+BuildRequires:  ppl_c-devel
+BuildRequires:  mpfr-devel
+BuildRequires:  libmpc-devel
 BuildRequires:	python-sphinx
 BuildRequires:	python-devel
 Requires(post): /sbin/install-info
