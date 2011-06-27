@@ -20,6 +20,7 @@ Source0:	%{srcname}.tar.bz2
 Patch0:		0001-Fix-compilation-for-Mandriva-Cooker-gcc-4.6.patch
 Requires:	gcc-plugin-devel = %{gccversion}-%{gccrelease}
 BuildRequires:	gcc-plugin-devel
+BuildRequires:	python-sphinx
 Requires(post): /sbin/install-info
 Requires(preun): /sbin/install-info
 
@@ -46,14 +47,8 @@ kernel, or about signal-safety in APIs.
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/pygmentize-melt
-%{gccdir}/plugin/include/
-%{gccdir}/plugin/libexec/
-%{gccdir}/plugin/melt-source/
-%{gccdir}/plugin/melt.so
-%{gccdir}/plugin/melt-build-module.mk
-%{_infodir}/meltplugin*
-%doc %{_docdir}/gcc-plugin-melt
+%{_bindir}/gcc-with-python
+%{gccdir}/python.so
 
 %prep
 %setup -q -n %{srcname}
@@ -62,9 +57,13 @@ kernel, or about signal-safety in APIs.
 %build
 %make plugin
 
+pushd docs
+	%make man
+popd
+
 %install
-%{__install} -m755 -D %{buildroot}%{_bindir}
-%{__install} -m755 -D %{buildroot}%{gccdir}
+%{__install} -m755 -d %{buildroot}%{_bindir}
+%{__install} -m755 -d %{buildroot}%{gccdir}
 %{__install} -m755 python.so %{buildroot}%{gccdir}/
 %{__install} -m755 gcc-with-python %{buildroot}%{_bindir}/
 
