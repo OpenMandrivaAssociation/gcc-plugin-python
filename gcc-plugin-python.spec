@@ -20,7 +20,10 @@ URL:		https://fedorahosted.org/gcc-python-plugin/
 Source0:	%{srcname}.tar.bz2
 Patch0:		0001-fix-permerror-misusage.patch
 Patch1:		0001-Using-Python-plugin-from-GCC-plugin-directory.patch
+Patch2:		0001-Using-Freedesktop-standard-for-image-viewing.patch
 Requires:	gcc-plugin-devel = %{gccversion}-%{gccrelease}
+Requires:	graphviz
+Requires:	xdg-utils
 BuildRequires:	gcc-plugin-devel
 BuildRequires:  gmp-devel
 BuildRequires:  ppl-devel
@@ -65,6 +68,7 @@ kernel, or about signal-safety in APIs.
 %setup -q -n %{srcname}
 %patch0 -p1 -b .permerror
 %patch1 -p1 -b .pluginpath
+%patch2 -p2 -b .xdg-open
 
 %build
 %make plugin
