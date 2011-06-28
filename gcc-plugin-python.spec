@@ -27,8 +27,8 @@ BuildRequires:  ppl-devel
 BuildRequires:  ppl_c-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  libmpc-devel
-%py_requires(d)
 BuildRequires:	python-sphinx
+%py_requires
 
 %description
 This is a plugin for GCC, which links against libpython, and
@@ -56,6 +56,9 @@ kernel, or about signal-safety in APIs.
 %{_bindir}/gcc-with-python
 %{_mandir}/gcc-python-plugin.1*
 %{python_sitelib}/gccutils.py
+%{python_sitelib}/cpybuilder.py
+%{python_sitelib}/cpychecker.py
+%{python_sitelib}/libcpychecker/*.py
 %{gccdir}/python.so
 
 %prep
@@ -75,11 +78,16 @@ popd
 %{__install} -m755 -d %{buildroot}%{_mandir}
 %{__install} -m755 -d %{buildroot}%{gccdir}
 %{__install} -m755 -d %{buildroot}%{python_sitelib}
+%{__install} -m755 -d %{buildroot}%{python_sitelib}/libcpychecker/
 
 %{__install} -m755 python.so %{buildroot}%{gccdir}/
 %{__install} -m755 gcc-with-python %{buildroot}%{_bindir}/
 %{__install} -m644 gccutils.py %{buildroot}%{python_sitelib}/
-
+%{__install} -m644 cpychecker.py %{buildroot}%{python_sitelib}/
+%{__install} -m644 cpybuilder.py %{buildroot}%{python_sitelib}/
+pushd libcpychecker
+	%{__install} -m644 *.py %{buildroot}%{python_sitelib}/libcpychecker/
+popd
 pushd docs
 	%{__install} -m644 _build/man/gcc-python-plugin.1* %{buildroot}%{_mandir}/
 popd
