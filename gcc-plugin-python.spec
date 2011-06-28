@@ -11,7 +11,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	3
+Release:	4
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
