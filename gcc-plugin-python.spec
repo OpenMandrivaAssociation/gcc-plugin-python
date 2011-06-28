@@ -10,7 +10,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	1
+Release:	2
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
