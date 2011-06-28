@@ -29,8 +29,6 @@ BuildRequires:  mpfr-devel
 BuildRequires:  libmpc-devel
 BuildRequires:	python-sphinx
 BuildRequires:	python-devel
-Requires(post): /sbin/install-info
-Requires(preun): /sbin/install-info
 
 %description
 This is a plugin for GCC, which links against libpython, and
