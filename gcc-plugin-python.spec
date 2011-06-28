@@ -68,7 +68,7 @@ kernel, or about signal-safety in APIs.
 %setup -q -n %{srcname}
 %patch0 -p1 -b .permerror~
 %patch1 -p1 -b .pluginpath~
-%patch2 -p2 -b .xdg-open~
+%patch2 -p1 -b .xdg-open~
 
 %build
 %make plugin
