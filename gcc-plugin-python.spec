@@ -11,7 +11,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	4
+Release:	5
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
@@ -57,6 +57,7 @@ kernel, or about signal-safety in APIs.
 %defattr(-,root,root,-)
 %{_bindir}/gcc-with-python
 %{_mandir}/gcc-python-plugin.1*
+%{python_sitelib}/gccutils.py
 %{gccdir}/python.so
 
 %prep
@@ -75,8 +76,12 @@ popd
 %{__install} -m755 -d %{buildroot}%{_bindir}
 %{__install} -m755 -d %{buildroot}%{_mandir}
 %{__install} -m755 -d %{buildroot}%{gccdir}
+%{__install} -m755 -d %{buildroot}%{python_sitelib}
+
 %{__install} -m755 python.so %{buildroot}%{gccdir}/
 %{__install} -m755 gcc-with-python %{buildroot}%{_bindir}/
+%{__install} -m644 gccutils.py %{buildroot}%{python_sitelib}/
+
 pushd docs
 	%{__install} -m644 _build/man/gcc-python-plugin.1* %{buildroot}%{_mandir}/
 popd
