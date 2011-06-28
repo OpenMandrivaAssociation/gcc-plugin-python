@@ -1,7 +1,7 @@
 %define name gcc-plugin-python
 %define srcname gcc-python-plugin-%{gccpythongit}
 %define gccversion 4.6.1
-%define gccrelease 1
+%define gccrelease 2
 %define gccpythongit 431bc10
 %define gccpythonversion 0.0.git%{gccpythongit}
 %define version %{gccversion}+%{gccpythonversion}
