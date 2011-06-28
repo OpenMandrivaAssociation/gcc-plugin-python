@@ -31,7 +31,7 @@ BuildRequires:  ppl_c-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  libmpc-devel
 BuildRequires:	python-sphinx
-%py_requires
+%py_requires -d
 
 %description
 This is a plugin for GCC, which links against libpython, and
