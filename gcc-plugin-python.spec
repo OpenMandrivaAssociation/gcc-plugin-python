@@ -2,8 +2,9 @@
 %define srcname gcc-python-plugin-%{gccpythongit}
 %define gccversion 4.6.1
 %define gccrelease 2
+%define dategit 20110628
 %define gccpythongit 7b437b2
-%define gccpythonversion 0.0.git%{gccpythongit}
+%define gccpythonversion 0.0.%{dategit}git%{gccpythongit}
 %define version %{gccversion}+%{gccpythonversion}
 
 %define gccdir %(gcc -print-file-name=plugin)
