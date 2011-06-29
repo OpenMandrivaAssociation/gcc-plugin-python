@@ -11,7 +11,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	6
+Release:	7
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
@@ -21,7 +21,7 @@ Source0:	%{srcname}.tar.bz2
 Patch0:		0001-fix-permerror-misusage.patch
 Patch1:		0001-Using-Python-plugin-from-GCC-plugin-directory.patch
 Patch2:		0001-Using-Freedesktop-standard-for-image-viewing.patch
-Requires:	gcc-plugin-devel = %{gccversion}-%{gccrelease}
+Requires:	gcc
 Requires:	graphviz
 Requires:	xdg-utils
 Suggests:	%{name}-doc
