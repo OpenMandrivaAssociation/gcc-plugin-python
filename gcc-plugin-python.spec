@@ -11,7 +11,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	5
+Release:	6
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
@@ -24,6 +24,7 @@ Patch2:		0001-Using-Freedesktop-standard-for-image-viewing.patch
 Requires:	gcc-plugin-devel = %{gccversion}-%{gccrelease}
 Requires:	graphviz
 Requires:	xdg-utils
+Suggests:	%{name}-doc
 BuildRequires:	gcc-plugin-devel
 BuildRequires:  gmp-devel
 BuildRequires:  ppl-devel
@@ -64,6 +65,19 @@ kernel, or about signal-safety in APIs.
 %{python_sitelib}/libcpychecker/*.py
 %{gccdir}/python.so
 
+%package doc
+Summary:	GCC Python Plugin HTML Documentation
+BuildArch:	noarch
+
+%description doc
+This package provides HTML documentation for the GCC Python
+Plugin, a GCC plugin aimed at tying together Python and GCC
+to be able to use Python script from inside the compiler.
+
+%files doc
+%defattr(-,root,root)
+%{_datadir}/%{name}-doc/*
+
 %prep
 %setup -q -n %{srcname}
 %patch0 -p1 -b .permerror~
@@ -75,11 +89,16 @@ kernel, or about signal-safety in APIs.
 
 pushd docs
 	%make man
+	%make html
 popd
 
 %install
 %{__install} -m755 -d %{buildroot}%{_bindir}
-%{__install} -m755 -d %{buildroot}%{_mandir}
+%{__install} -m755 -d %{buildroot}%{_mandir}/man1/
+%{__install} -m755 -d %{buildroot}%{_datadir}/%{name}-doc/
+%{__install} -m755 -d %{buildroot}%{_datadir}/%{name}-doc/_images/
+%{__install} -m755 -d %{buildroot}%{_datadir}/%{name}-doc/_sources/
+%{__install} -m755 -d %{buildroot}%{_datadir}/%{name}-doc/_static/
 %{__install} -m755 -d %{buildroot}%{gccdir}
 %{__install} -m755 -d %{buildroot}%{python_sitelib}
 %{__install} -m755 -d %{buildroot}%{python_sitelib}/libcpychecker/
@@ -94,6 +113,12 @@ pushd libcpychecker
 popd
 pushd docs
 	%{__install} -m644 _build/man/gcc-python-plugin.1* %{buildroot}%{_mandir}/man1/
+	%{__install} -m644 _build/html/*.html %{buildroot}%{_datadir}/%{name}-doc/
+	%{__install} -m644 _build/html/*.js %{buildroot}%{_datadir}/%{name}-doc/
+	%{__install} -m644 _build/html/*.inv %{buildroot}%{_datadir}/%{name}-doc/
+	%{__install} -m644 _build/html/_images/* %{buildroot}%{_datadir}/%{name}-doc/_images/
+	%{__install} -m644 _build/html/_sources/* %{buildroot}%{_datadir}/%{name}-doc/_sources/
+	%{__install} -m644 _build/html/_static/* %{buildroot}%{_datadir}/%{name}-doc/_static/
 popd
 
 %clean
