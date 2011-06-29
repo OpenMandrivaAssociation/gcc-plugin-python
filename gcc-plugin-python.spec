@@ -57,7 +57,7 @@ kernel, or about signal-safety in APIs.
 %files
 %defattr(-,root,root,-)
 %{_bindir}/gcc-with-python
-%{_mandir}/gcc-python-plugin.1*
+%{_mandir}/man1/gcc-python-plugin.1*
 %{python_sitelib}/gccutils.py
 %{python_sitelib}/cpybuilder.py
 %{python_sitelib}/cpychecker.py
@@ -93,7 +93,7 @@ pushd libcpychecker
 	%{__install} -m644 *.py %{buildroot}%{python_sitelib}/libcpychecker/
 popd
 pushd docs
-	%{__install} -m644 _build/man/gcc-python-plugin.1* %{buildroot}%{_mandir}/
+	%{__install} -m644 _build/man/gcc-python-plugin.1* %{buildroot}%{_mandir}/man1/
 popd
 
 %clean
