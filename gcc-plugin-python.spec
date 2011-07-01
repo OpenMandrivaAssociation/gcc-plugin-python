@@ -24,7 +24,8 @@
 %define name gcc-plugin-python
 %define version %{gccver}+%{git_get_ver}
 
-%define gccver %(gcc --version | grep '^gcc' | cut -d' ' -f3)
+#define gccver %(gcc --version | grep '^gcc' | cut -d' ' -f3)
+%define gccver 4.6.1
 %define gccdir %(gcc -print-file-name=plugin)
 
 Name:		%{name}
