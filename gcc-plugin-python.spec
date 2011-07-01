@@ -1,28 +1,9 @@
-## Git Specific Stuff (from http://wiki.mandriva.com/en/Rpmbuild_and_git)
-#define git_repodir %(echo ~/build/)
-#define git_gitdir %{git_repodir}/%{git_repo}/.git
-#
-#define git_get_source pushd %{git_repodir}/%{git_repo} ;\
-#        /usr/bin/git archive --format=tar --prefix=%{name}-%{version}/ %{git_head} | \
-#                bzip2 -c > %{_sourcedir}/%{name}-%{version}.tar.bz2 ;\
-#        popd
-#
-#define git_clone_source if [ -d %{name}-%{version} ] ; then \
-#                cd %{name}-%{version} && git pull origin %{git_head} ; \
-#        else \
-#                git clone %{git_gitdir} %{name}-%{version} && \
-#                cd %{name}-%{version}/ ; \
-#        fi
-#
-#define git_get_ver  %(git --git-dir=%{git_gitdir} describe --tags | sed 's/^v\\?\\(.*\\)-\\([0-9]\\+\\)-g.*$/\\1/;s/-//')
-#define git_get_rel  %(git --git-dir=%{git_gitdir} describe --tags | grep '\\-g.\\+$' | sed 's/^v\\?\\(.*\\)-\\([0-9]\\+\\)-g.*$/\\2/')
-###### End of Git Specific Stuff
-
-%define git_repo gcc-python-plugin
-%define git_head mandriva
+#define git_repo gcc-python-plugin
+#define git_head mandriva
 
 %define name gcc-plugin-python
-%define version %{gccver}+%{git_get_ver}
+%define gitversion 0.0.20110701git8fc9ca7
+%define version %{gccver}+%{gitversion}
 
 #define gccver %(gcc --version | grep '^gcc' | cut -d' ' -f3)
 %define gccver 4.6.1
@@ -30,7 +11,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%{git_get_rel}
+Release:	1
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
