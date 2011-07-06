@@ -1,28 +1,5 @@
-## Git Specific Stuff (from http://wiki.mandriva.com/en/Rpmbuild_and_git)
-#define git_repodir %(echo ~/build/)
-#define git_gitdir %{git_repodir}/%{git_repo}/.git
-#
-#define git_get_source pushd %{git_repodir}/%{git_repo} ;\
-#        /usr/bin/git archive --format=tar --prefix=%{name}-%{version}/ %{git_head} | \
-#                bzip2 -c > %{_sourcedir}/%{name}-%{version}.tar.bz2 ;\
-#        popd
-#
-#define git_clone_source if [ -d %{name}-%{version} ] ; then \
-#                cd %{name}-%{version} && git pull origin %{git_head} ; \
-#        else \
-#                git clone %{git_gitdir} %{name}-%{version} && \
-#                cd %{name}-%{version}/ ; \
-#        fi
-#
-#define git_get_ver  %(git --git-dir=%{git_gitdir} describe --tags | sed 's/^v\\?\\(.*\\)-\\([0-9]\\+\\)-g.*$/\\1/;s/-//')
-#define git_get_rel  %(git --git-dir=%{git_gitdir} describe --tags | grep '\\-g.\\+$' | sed 's/^v\\?\\(.*\\)-\\([0-9]\\+\\)-g.*$/\\2/')
-###### End of Git Specific Stuff
-
-%define git_repo gcc-python-plugin
-%define git_head mandriva
-
 %define name gcc-plugin-python
-%define version %{gccver}+%{git_get_ver}
+%define version %{gccver}+0.0.20110706giteeb6135
 
 #define gccver %(gcc --version | grep '^gcc' | cut -d' ' -f3)
 %define gccver 4.6.1
@@ -30,12 +7,12 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%{git_get_rel}
+Release:	1
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
 URL:		https://fedorahosted.org/gcc-python-plugin/
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	%{name}-0.0.20110706giteeb6135.tar.bz2
 Patch0:		0001-Using-Python-plugin-from-GCC-plugin-directory.patch
 Requires:	gcc
 Requires:	graphviz
@@ -95,7 +72,7 @@ to be able to use Python script from inside the compiler.
 %doc %{_docdir}/%{name}-doc/*
 
 %prep
-%setup -q
+%setup -q -n %{name}-0.0.20110706giteeb6135
 #patch0 -p1 -b .pluginpath~
 
 %build
