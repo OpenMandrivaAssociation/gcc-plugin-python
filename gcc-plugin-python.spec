@@ -1,18 +1,15 @@
 %define name gcc-plugin-python
-%define version %{gccver}+0.0.20110706giteeb6135
-
-#define gccver %(gcc --version | grep '^gcc' | cut -d' ' -f3)
-%define gccver 4.6.1
 %define gccdir %(gcc -print-file-name=plugin)
 
 Name:		%{name}
-Version:	%{version}
+Epoch:		1
+Version:	0.5
 Release:	1
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
 URL:		https://fedorahosted.org/gcc-python-plugin/
-Source0:	%{name}-0.0.20110706giteeb6135.tar.bz2
+Source0:	%{name}-0.5.tar.bz2
 Patch0:		0001-Using-Python-plugin-from-GCC-plugin-directory.patch
 Requires:	gcc
 Requires:	graphviz
@@ -72,7 +69,7 @@ to be able to use Python script from inside the compiler.
 %doc %{_docdir}/%{name}-doc/*
 
 %prep
-%setup -q -n %{name}-0.0.20110706giteeb6135
+%setup -q -n %{name}-0.5
 #patch0 -p1 -b .pluginpath~
 
 %build
