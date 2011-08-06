@@ -10,7 +10,9 @@ Summary:	GCC Python Plugin
 Group:		Development/C
 URL:		https://fedorahosted.org/gcc-python-plugin/
 Source0:	%{name}-0.5.tar.bz2
-Patch0:		0001-Using-Python-plugin-from-GCC-plugin-directory.patch
+Patch0:	0001-Using-Python-plugin-from-GCC-plugin-directory.patch
+Patch1:	0002-Fake-commit.patch
+
 Requires:	gcc
 Requires:	graphviz
 Requires:	xdg-utils
@@ -70,7 +72,8 @@ to be able to use Python script from inside the compiler.
 
 %prep
 %setup -q -n %{name}-0.5
-#patch0 -p1 -b .pluginpath~
+
+%apply_patches
 
 %build
 %make plugin
