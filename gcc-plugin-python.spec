@@ -24,6 +24,7 @@ BuildRequires:  ppl_c-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  libmpc-devel
 BuildRequires:	python-sphinx
+BuildRequires:	python-six
 %py_requires -d
 
 %description
