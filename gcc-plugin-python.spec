@@ -3,13 +3,13 @@
 
 Name:		%{name}
 Epoch:		1
-Version:	0.5
+Version:	0.6
 Release:	1
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
 URL:		https://fedorahosted.org/gcc-python-plugin/
-Source0:	%{name}-0.5.tar.bz2
+Source0:	%{name}-0.6.tar.bz2
 Patch0:	0001-Using-Python-plugin-from-GCC-plugin-directory.patch
 Patch1:	0002-Fake-commit.patch
 
@@ -72,7 +72,7 @@ to be able to use Python script from inside the compiler.
 %doc %{_docdir}/%{name}-doc/*
 
 %prep
-%setup -q -n %{name}-0.5
+%setup -q -n %{name}-0.6
 
 %apply_patches
 
