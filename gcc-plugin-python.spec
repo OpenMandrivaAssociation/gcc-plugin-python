@@ -51,6 +51,7 @@ kernel, or about signal-safety in APIs.
 %files
 %defattr(-,root,root,-)
 %{_bindir}/gcc-with-python
+%{_bindir}/gcc-with-cpychecker
 %{_mandir}/man1/gcc-python-plugin.1*
 %{python_sitelib}/gccutils.py
 %{python_sitelib}/cpybuilder.py
