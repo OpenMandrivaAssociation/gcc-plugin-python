@@ -4,7 +4,7 @@
 Name:		%{name}
 Epoch:		1
 Version:	0.6
-Release:	1
+Release:	2
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
@@ -97,6 +97,8 @@ popd
 
 %{__install} -m755 python.so %{buildroot}%{gccdir}/
 %{__install} -m755 gcc-with-python %{buildroot}%{_bindir}/
+%{__install} -m755 gcc-with-cpychecker %{buildroot}%{_bindir}/
+
 %{__install} -m644 gccutils.py %{buildroot}%{python_sitelib}/
 %{__install} -m644 cpychecker.py %{buildroot}%{python_sitelib}/
 %{__install} -m644 cpybuilder.py %{buildroot}%{python_sitelib}/
