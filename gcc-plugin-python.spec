@@ -4,7 +4,7 @@
 Name:		%{name}
 Epoch:		1
 Version:	0.6.53gfbfa7fa
-Release:	2
+Release:	3
 License:	GPLv3
 Summary:	GCC Python Plugin
 Group:		Development/C
