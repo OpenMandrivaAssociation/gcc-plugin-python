@@ -1,0 +1,28 @@
+From 15ff5fa33f10ca39e32a0bdfe5059ac014ea853b Mon Sep 17 00:00:00 2001
+From: Alexandre Lissy <alissy@mandriva.com>
+Date: Tue, 28 Jun 2011 12:53:40 +0200
+Subject: [PATCH 1/2] Using Python plugin from GCC plugin directory
+
+Python plugin will get installed at the directory corresponding to the output of
+the command: gcc -print-file-name=plugin. However, the current gcc-with-python
+makes usage of -fplugin=$(pwd)python.so, thus leading to searching python.so in
+the bad place. Current commits changes 'pwd' call to a
+'gcc -print-file-name=plugin' that will allow for working integration inside the
+Mandriva system.
+---
+ gcc-with-python |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/gcc-with-python b/gcc-with-python
+index f68c918..b9e40a1 100755
+--- a/gcc-with-python
++++ b/gcc-with-python
+@@ -16,4 +16,4 @@
+ #   along with this program.  If not, see
+ #   <http://www.gnu.org/licenses/>.
+ 
+-gcc -fplugin=$(pwd)/python.so -fplugin-arg-python-script=$@
++gcc -fplugin=$(gcc -print-file-name=plugin)/python.so -fplugin-arg-python-script=$@
+-- 
+1.7.6
+

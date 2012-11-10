@@ -1,0 +1,25 @@
+From fbfa7fa01481a82b4a33f0681292afb28cf2def2 Mon Sep 17 00:00:00 2001
+From: Alexandre Lissy <alissy@mandriva.com>
+Date: Thu, 25 Aug 2011 20:33:56 +0200
+Subject: [PATCH 2/2] Add c-common include directory
+
+---
+ Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3e01942..4ba8724 100644
+--- a/Makefile
++++ b/Makefile
+@@ -86,7 +86,7 @@ PYTHON_CONFIG=python-config
+ PYTHON_CFLAGS=$(shell $(PYTHON_CONFIG) --cflags)
+ PYTHON_LDFLAGS=$(shell $(PYTHON_CONFIG) --ldflags)
+ 
+-CFLAGS+= -I$(GCCPLUGINS_DIR)/include -fPIC -O2 -Wall -Werror -g $(PYTHON_CFLAGS) $(PYTHON_LDFLAGS)
++CFLAGS+= -I$(GCCPLUGINS_DIR)/include -I$(GCCPLUGINS_DIR)/include/c-family -fPIC -O2 -Wall -Werror -g $(PYTHON_CFLAGS) $(PYTHON_LDFLAGS)
+ ifneq "$(PLUGIN_PYTHONPATH)" ""
+   CFLAGS+= -DPLUGIN_PYTHONPATH='"$(PLUGIN_PYTHONPATH)"'
+ endif
+-- 
+1.7.6
+
