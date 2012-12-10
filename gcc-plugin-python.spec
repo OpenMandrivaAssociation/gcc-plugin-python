@@ -118,3 +118,109 @@ popd
 
 %clean
 rm -fr %{buildroot}
+
+
+%changelog
+* Fri Oct 21 2011 Alexandre Lissy <alissy@mandriva.com> 1:0.6.53gfbfa7fa-3
++ Revision: 705588
+- Updating for latest GCC build
+
+* Sun Oct 16 2011 Alexandre Lissy <alissy@mandriva.com> 1:0.6.53gfbfa7fa-2
++ Revision: 704861
+- Updating gcc python plugin to latest git snapshot (post v0.6)
+
+* Thu Aug 25 2011 Alexandre Lissy <alissy@mandriva.com> 1:0.6.53gfbfa7fa-1
++ Revision: 697093
+- Fixing build
+- Updating to latest git snapshot
+
+* Wed Aug 17 2011 Alexandre Lissy <alissy@mandriva.com> 1:0.6-2
++ Revision: 695031
+- Add missing installation of /usr/bin/gcc-with-cpychecker
+- Adding install of gcc-with-cpychecker
+
+* Wed Aug 17 2011 Alexandre Lissy <alissy@mandriva.com> 1:0.6-1
++ Revision: 694858
+- Update to latest post 0.6 snapshot
+
+* Fri Aug 12 2011 Alexandre Lissy <alissy@mandriva.com> 1:0.5-1
++ Revision: 694207
+- Adding BuildRequires against python-six in specfile
+- Adding BuildRequires against python-six
+- Updating source and patches thanks to gitrpm helper
+- Updating for latest gitrpm helper
+- Update for latest rpm-common changes
+- GCC Python Plugin v0.5
+- Push Epoch to 1
+  Change versioning: removing gcc version
+- Remove commit id from package version
+- Adding gitrpm stuff
+
+* Wed Jul 06 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110706giteeb6135-1
++ Revision: 688944
+- Fixing git funny things
+- Re-enabling Git funny stuff, just to see if it passes the buildsystem this time.
+
+* Fri Jul 01 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110701git8fc9ca7-1
++ Revision: 688467
+- Revert git fun, as the buildsystem seems not to like it :(
+- Remove GCC version autodetection
+- Updating sources to latest git
+  Experimenting with rpm and git
+
+* Wed Jun 29 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110628git7b437b2-8
++ Revision: 688232
+- Fix doc paths, and release bump
+
+* Wed Jun 29 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110628git7b437b2-7
++ Revision: 688209
+- Remove unneeded dependency against gcc-plugin-devel
+  Release bump
+- Modifying gcc-with-python patch: removing hard-coded path, let's use the shorter way.
+
+* Wed Jun 29 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110628git7b437b2-6
++ Revision: 688206
+- Adding HTML documentation as a separate, noarch package.
+- Fix man page directory
+
+* Tue Jun 28 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110628git7b437b2-5
++ Revision: 687795
+- Fix Python BuildRequires
+- Fix patch level
+- Change patch format
+- Fix patch backups names
+- Adding patch for replacement of 'eog' with 'xdg-open' (and the Requires corresponding)
+- Fix python related BuildRequires
+  Adding cpybuilder, cpychecker and libcpychecker
+- Changing BuildRequires for python-devel to use the macro
+- Remove use less post/preun
+- Adding gccutils.py
+
+* Tue Jun 28 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110628git7b437b2-4
++ Revision: 687701
+- Release bump
+- Adding a patch for correct reference to the GCC plugins' directory
+
+* Tue Jun 28 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.20110628git7b437b2-3
++ Revision: 687678
+- Fix version
+- Updating sources to latest git
+  Correct fix for Werror=format-security errors reported previously during compilation (patch sent upstream)
+
+* Tue Jun 28 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.git431bc10-2
++ Revision: 687648
+- gcc-plugin-devel release bump
+- gcc-plugin-devel release bump
+
+* Mon Jun 27 2011 Alexandre Lissy <alissy@mandriva.com> 4.6.1+0.0.git431bc10-1
++ Revision: 687571
+- Adding missing BuildRequires from GCC
+- Add missing BuildRequires against Python
+- Missing patch
+- Added manpages
+- Fix paths and remove gcc melt oldies
+- Adding build section
+  Adding install section
+- Initial non functionnal import of GCC Python Plugin
+- Created package structure for gcc-plugin-python.
+
