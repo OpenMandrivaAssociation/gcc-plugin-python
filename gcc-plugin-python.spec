@@ -70,6 +70,17 @@ to be able to use Python script from inside the compiler.
 %files doc
 %doc %{_docdir}/%{name}-doc/*
 
+%package -n gcc-python-plugin-c-api
+Summary: Shared library to make it easier to write GCC plugins
+Group:   Development/C
+Requires: gcc
+
+%description -n gcc-python-plugin-c-api
+Shared library to make it easier to write GCC plugins
+
+%files -n gcc-python-plugin-c-api
+%{gcc_plugins_dir}/libgcc-c-api.so
+
 %prep
 %setup -q -n gcc-python-plugin-0.12
 
