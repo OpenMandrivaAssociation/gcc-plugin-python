@@ -84,7 +84,7 @@ Shared library to make it easier to write GCC plugins
 %prep
 %setup -q -n gcc-python-plugin-0.12
 
-%apply_patches
+%autopatch -p1
 
 %build
 %make plugin
