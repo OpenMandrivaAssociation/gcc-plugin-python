@@ -17,6 +17,7 @@ Requires:	gcc
 Requires:	graphviz
 Requires:	xdg-utils
 Suggests:	%{name}-doc
+BuildRequires:	make
 BuildRequires:	gcc-plugin-devel
 BuildRequires:  gmp-devel
 BuildRequires:  ppl-devel
